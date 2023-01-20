@@ -1,6 +1,6 @@
 
 # Contents
-## Go-Lang Dasar
+## Go-Lang Basic
     .
     ├── Condition       # Using if and switch statement
     ├── DataType        # Basic operation on variable, data type and operator.
