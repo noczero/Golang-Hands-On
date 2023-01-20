@@ -3,10 +3,13 @@
 ## Go-Lang Basic
     .
     ├── Condition       # Using if and switch statement
+    ├── DataStructure   # Implement data structure
     ├── DataType        # Basic operation on variable, data type and operator.
     ├── Function        # Types of function
     ├── HelloWorld      # Just Hello World
-    └── Looping         # Types of looping
+    ├── Looping         # Types of looping
+    ├── Package         # Local packages
+    └── Pointers        # Implements pointer
 ## Go-Lang Database
 ## Go-Lang MySQL
 ## Go-Lang Context
