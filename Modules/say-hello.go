@@ -1,5 +1,5 @@
 package Modules
 
 func SayHello(name string) string {
-	return "Hello " + name
+	return "Hello " + name + " V2"
 }
