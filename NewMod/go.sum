@@ -1,2 +1,4 @@
 github.com/noczero/Golang-Hands-On/Modules v0.0.0-20230122130117-f6e9b94e2c3d h1:vPS+aZ51CbPy1oRCs/1I3LqxMGa0kFyC9KVXzGs1nJo=
 github.com/noczero/Golang-Hands-On/Modules v0.0.0-20230122130117-f6e9b94e2c3d/go.mod h1:p+NMDfEDQ7g/rJe8IhxQB3hXt1ZNJoypSArNjI80m2w=
+github.com/noczero/Golang-Hands-On/Modules/v2 v2.0.0-20230122132719-69722deba80e h1:V/rxH2k3rmJZ7fqUpaB2dwFDFTCMIdweGhj/O7GkuGE=
+github.com/noczero/Golang-Hands-On/Modules/v2 v2.0.0-20230122132719-69722deba80e/go.mod h1:CYnEi60gnXyEYkFNxpZMZByXLe6jByjzQRh+L2fpWuQ=

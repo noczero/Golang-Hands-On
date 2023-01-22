@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/noczero/Golang-Hands-On/Modules"
+	"github.com/noczero/Golang-Hands-On/Modules/v2"
 )
 
 func main() {
