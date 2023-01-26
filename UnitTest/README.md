@@ -24,3 +24,16 @@ Implements slice struct, subtest, and looping for dynamic parameter testing.
 
 ## Mock Test
 Simulate the object data on repository layer and get testing on service layer
+
+## Benchmark Test
+Bencmark is used to calculate performance time of code execution.
+The parameter is testing.B, the attribute for iteration is N where the code execute inside the iteration.
+The result is how long in seconds the code been executed.
+
+### Rules :
+Name function starts with Benchmark word, no returm value.
+
+### How to run :
+```bash 
+go test -v -run=NotMathUnitTest -bench=BenchmarkTest
+```
