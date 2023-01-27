@@ -16,8 +16,9 @@
 ## Go-Lang Database
 ## Go-Lang MySQL
 ## Go-Lang Context
-## Go-Lang Goroutine
-## Go-Lang Concurrency
+## Go-Lang Concurrency & Goroutine 
+    .
+    ├── GoRoutine       # Implements async style of concurrency programming
 ## Go-Lang Embed
 ## Go-Lang Web
 ## Go-Lang RESTful API
