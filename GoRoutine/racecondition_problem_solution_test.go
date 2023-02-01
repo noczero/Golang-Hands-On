@@ -3,6 +3,7 @@ package GoRoutine
 import (
 	"fmt"
 	"sync"
+	"sync/atomic"
 	"testing"
 	"time"
 )
@@ -140,5 +141,111 @@ func TestPoolObjectPattern(t *testing.T) {
 }
 
 /*
+## Sync Map
+	Similiar with map, but it designed for goroutine process to handle race condition.
+*/
+// - start
+func AddToMap(data *sync.Map, value int, group *sync.WaitGroup) {
+	defer group.Done()
+	group.Add(1)
 
- */
+	data.Store(value, value) // store key and value
+}
+
+func TestSyncMap(t *testing.T) {
+	data := &sync.Map{}
+	group := &sync.WaitGroup{}
+
+	for i := 0; i < 100; i++ {
+		go AddToMap(
+			data, i, group) // add goroutine
+	}
+
+	// wait until process finished
+	group.Wait()
+
+	fmt.Println("Printed data")
+	// iterate data using range method to print data
+	data.Range(func(key, value interface{}) bool {
+		fmt.Println(key, ":", value)
+		return true
+	})
+}
+
+// --end
+
+/*
+## Sync.Cond
+	Implements condition based locking. Need locker such as Mutex or RWMutex.
+	There's signal() to continue process wait() one by one inside goroutine,
+	also broadcast() to continoue process waat() for all.
+*/
+// -- start
+
+func WaitSyncCondition(value int, cond *sync.Cond, group *sync.WaitGroup) {
+	defer group.Done()
+	group.Add(1)
+
+	// implements lock
+	cond.L.Lock()
+	cond.Wait()
+	fmt.Println("Done", value)
+	cond.L.Unlock()
+}
+
+func TestSyncCondition(t *testing.T) {
+	lock := &sync.Mutex{}
+	cond := sync.NewCond(lock)
+
+	group := &sync.WaitGroup{}
+
+	for i := 0; i < 10; i++ {
+		go WaitSyncCondition(i, cond, group)
+	}
+
+	// send signal to running one by one
+	go func() {
+		for i := 0; i < 10; i++ {
+			time.Sleep(1 * time.Second)
+			cond.Signal() // send signal to condition
+		}
+	}()
+
+	// or send broadcast to all goroutine to skipped wait()
+	go func() {
+		time.Sleep(1 * time.Second)
+		cond.Broadcast()
+	}()
+
+	group.Wait()
+}
+
+/*
+## Atomic
+	This package helps simply of not using Mutex or RWMutex in concurrent.
+	And it applies in primitive variable like numeric but not struct.
+*/
+// - start
+
+func TestAtomic(t *testing.T) {
+	var value int64 = 0
+
+	group := sync.WaitGroup{}
+
+	for i := 0; i < 1000; i++ {
+		go func() {
+			group.Add(1)
+
+			for j := 0; j < 100; j++ {
+				atomic.AddInt64(&value, 1)
+			}
+
+			group.Done()
+		}()
+	}
+
+	group.Wait()
+	fmt.Println("Value : ", value)
+}
+
+// - end
