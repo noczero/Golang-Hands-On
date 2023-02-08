@@ -3,6 +3,8 @@
 ## Go-Lang Basic
     .
     ├── Condition       # Using if and switch statement
+    ├── Context         # Context implementation
+    ├── Database        # MySQL Database implementation with repository layered
     ├── DataStructure   # Implement data structure
     ├── DataType        # Basic operation on variable, data type and operator.
     ├── Function        # Types of function

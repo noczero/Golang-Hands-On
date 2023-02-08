@@ -1,0 +1,18 @@
+services:
+  db:
+    image: mysql:latest
+    cap_add:
+      - SYS_NICE
+    restart: always
+    environment:
+      - MYSQL_DATABASE=zero_db
+      - MYSQL_ROOT_PASSWORD=zero_pwd
+    ports:
+      - '3306:3306'
+    volumes:
+      - db:/var/lib/mysql
+      - ./db:/docker-entrypoint-initdb.d/:ro
+
+volumes:
+  db:
+    driver: local
