@@ -8,6 +8,7 @@ import (
 	"github.com/noczero/Golang-Hands-On/RestfulAPI/controller"
 	"github.com/noczero/Golang-Hands-On/RestfulAPI/exception"
 	"github.com/noczero/Golang-Hands-On/RestfulAPI/helper"
+	"github.com/noczero/Golang-Hands-On/RestfulAPI/middleware"
 	"github.com/noczero/Golang-Hands-On/RestfulAPI/repository"
 	"github.com/noczero/Golang-Hands-On/RestfulAPI/service"
 	"net/http"
@@ -33,9 +34,13 @@ func main() {
 	router.PanicHandler = exception.ErrorHandler
 
 	server := http.Server{
-		Addr:    "localhost:3000",
-		Handler: router,
+		Addr: "localhost:3000",
+		//Handler: router,
+
+		// add middleware as router
+		Handler: middleware.NewAuthMiddleware(router),
 	}
+
 	err := server.ListenAndServe()
 	helper.PanicIfError(err)
 }

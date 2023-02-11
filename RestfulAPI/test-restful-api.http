@@ -1,9 +1,11 @@
 ### Get all categories
 GET http://localhost:3000/api/categories
+X-API-Key: SECRETAPIKEYEXAMPLE
 Accept: application/json
 
 ### Create New Category
 POST http://localhost:3000/api/categories
+X-API-Key: SECRETAPIKEYEXAMPLE
 Accept: application/json
 Content-Type: application/json
 
@@ -14,11 +16,13 @@ Content-Type: application/json
 
 ### Get Category by id
 GET http://localhost:3000/api/categories/3
+X-API-Key: SECRETAPIKEYEXAMPLE
 Accept: application/json
 
 
 ### Update Category by id
-PUT http://localhost:3000/api/categories/6
+PUT http://localhost:3000/api/categories/3
+X-API-Key: SECRETAPIKEYEXAMPLE
 Accept: application/json
 Content-Type: application/json
 
@@ -27,5 +31,6 @@ Content-Type: application/json
 }
 
 ### Delete Category by id
-DELETE http://localhost:3000/api/categories/1
+DELETE http://localhost:3000/api/categories/5
+X-API-Key: SECRETAPIKEYEXAMPLE
 Accept: application/json
